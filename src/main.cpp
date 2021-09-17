@@ -22,12 +22,10 @@ void speedTest(void)
   volatile int v;
   long l1,l2;
   float f1,f2;
-  int p,q;
-  long int r;
+  long int r; // unused-but-set-variable
   unsigned long m,n;
   float d, overhead = 0;
   char buffer[30];
-  void *data;
 
   Serial.println(F(""));
   Serial.println(F("Speed test"));
