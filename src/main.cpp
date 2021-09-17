@@ -13,6 +13,7 @@
 //  * y |= (1<<x)
 
 #include <Arduino.h>
+#include "WiFi.h"
 
 void speedTest(void)
 {
@@ -26,6 +27,7 @@ void speedTest(void)
   unsigned long m,n;
   float d, overhead = 0;
   char buffer[30];
+  void *data;
 
   Serial.println(F(""));
   Serial.println(F("Speed test"));
@@ -1329,6 +1331,80 @@ void speedTest(void)
   Serial.print (d,3);
   Serial.println (F(" us"));
 
+  Serial.print(F("  WiFi.localIP()            : "));
+  delay(70);     // Allow the Serial text to be transmitted
+  m=millis();
+  for (i=0; i<1; i++)
+  {
+    for (j=0; j<1000; j++)
+    {
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+      WiFi.localIP();
+    }
+  }
+  n=millis();
+  d = ((float)n - (float)m) / ((float)i * (float)j);
+  d *= 1000.0;
+  d -= overhead;
+  d /= 20.0;
+  Serial.print (d,3);
+  Serial.println (F(" us"));
+
+  Serial.print(F("  WiFi.status()             : "));
+  delay(70);     // Allow the Serial text to be transmitted
+  m=millis();
+  for (i=0; i<1; i++)
+  {
+    for (j=0; j<1000; j++)
+    {
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+      WiFi.status();
+    }
+  }
+  n=millis();
+  d = ((float)n - (float)m) / ((float)i * (float)j);
+  d *= 1000.0;
+  d -= overhead;
+  d /= 20.0;
+  Serial.print (d,3);
+  Serial.println (F(" us"));
+
 
   Serial.println(F("-----------"));
 }
@@ -1341,7 +1417,7 @@ void setup()
   Serial.println("Speed Test will begin momentarily.");
   Serial.println("");
  
- delay(4000);
+  delay(4000);
   
   speedTest();
 }
