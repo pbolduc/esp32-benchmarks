@@ -26,6 +26,8 @@ void speedTest(void)
   unsigned long m,n;
   float d, overhead = 0;
   char buffer[30];
+  timeval tv; // time_t now;
+  time_t now;
 
   Serial.println(F(""));
   Serial.println(F("Speed test"));
@@ -1431,6 +1433,81 @@ void speedTest(void)
       WiFi.status();
       WiFi.status();
       WiFi.status();
+    }
+  }
+  n=millis();
+  d = ((float)n - (float)m) / ((float)i * (float)j);
+  d *= 1000.0;
+  d -= overhead;
+  d /= 20.0;
+  Serial.print (d,3);
+  Serial.println (F(" us"));
+
+
+  Serial.print(F("  gettimeofday              : "));
+  delay(70);     // Allow the Serial text to be transmitted
+  m=millis();
+  for (i=0; i<1; i++)
+  {
+    for (j=0; j<1000; j++)
+    {
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+      gettimeofday(&tv,0);
+    }
+  }
+  n=millis();
+  d = ((float)n - (float)m) / ((float)i * (float)j);
+  d *= 1000.0;
+  d -= overhead;
+  d /= 20.0;
+  Serial.print (d,3);
+  Serial.println (F(" us"));
+  
+  Serial.print(F("  time                      : "));
+  delay(70);     // Allow the Serial text to be transmitted
+  m=millis();
+  for (i=0; i<1; i++)
+  {
+    for (j=0; j<1000; j++)
+    {
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
+      time(&now);
     }
   }
   n=millis();
